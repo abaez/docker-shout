@@ -1,0 +1,12 @@
+[Unit]
+Description=Redis container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run -v /etc/shout:/config --name shout abaez/shout
+ExecStop=/usr/bin/docker stop -t 2 shout; docker rm -f shout
+
+[Install]
+WantedBy=local.target
