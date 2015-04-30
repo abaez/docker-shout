@@ -1,11 +1,12 @@
 [Unit]
-Description=Redis container
+Description=Shout container
+Documentation=http://shout-irc.com/docs/
 Requires=docker.service
 After=docker.service
 
 [Service]
 Restart=always
-ExecStart=/usr/bin/docker run -v /etc/shout:/config --name shout abaez/shout
+ExecStart=/usr/bin/docker run -v /etc/shout:/config -p "9000:9000" --name shout abaez/shout
 ExecStop=/usr/bin/docker stop -t 2 shout; docker rm -f shout
 
 [Install]
