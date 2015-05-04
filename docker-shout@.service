@@ -8,7 +8,7 @@ After=docker.service
 User=%i
 Restart=always
 ExecStart=/usr/bin/docker run -v /etc/shout:/config -p "9000:9000" --name shout abaez/shout
-ExecStop=/usr/bin/docker stop -t 2 shout; docker rm -f shout
+ExecStop=/usr/bin/docker stop -t 2 shout; /usr/bin/docker rm -f shout
 
 [Install]
 WantedBy=local.target
