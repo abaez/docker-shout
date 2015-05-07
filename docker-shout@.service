@@ -5,12 +5,12 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-User=%i
+User=%u
 Restart=on-failure
 RestartSec=10
 ExecStartPre=-/usr/bin/docker kill shout
 ExecStartPre=-/usr/bin/docker rm shout
-ExecStart=/usr/bin/docker run -v /etc/shout:/config -p "9000:9000" --name=shout abaez/shout
+ExecStart=/usr/bin/docker run -v /etc/shout:/config -p "%i:9000" --name=shout abaez/shout
 ExecStop=-/usr/bin/docker stop -t 2 shout
 
 [Install]
