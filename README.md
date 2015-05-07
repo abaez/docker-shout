@@ -42,3 +42,6 @@ sudo ln -s docker-shout@.service \
 You don't need to declare the user, since it uses the default user of the
 running service. However, if you want to be specific, you can always change
 the user by replacing `%u`, on line 8 with your user, in the unit file.
+
+Lastly, unless you want the volume configuration auto mounted to `/etc/shout`,
+change the volume location to whatever desire.
