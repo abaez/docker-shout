@@ -39,7 +39,7 @@ quick `daemon-reload`.
 ```
 sudo cp <docker-shout source>/docker-shout@.service /usr/lib/systemd/system
 sudo systemctl daemon-reload
-``
+```
 
 Finally, you can append to your systemd setup by giving the port you
 desire for the service to run under.
