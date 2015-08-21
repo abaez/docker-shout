@@ -31,14 +31,23 @@ __Note__: don't forget to change those volume and port settings on the
 
 #### systemd unit file
 If you want to have the docker container running automagically on your
-machine, then this is the place to go. All you need to do is make a soft link
-of the `docker-shout@.service` file with the port you want to the multi-user
-directory of your systemd set up.
+machine, then this is the place to go.
+
+All you need to do is first copy to your systemd service directory and do a
+quick `daemon-reload`.
 
 ```
-sudo ln -s docker-shout@.service \
-/etc/systemd/system/multi-user.target.wants/docker-shout@9000.service
+sudo cp <docker-shout source>/docker-shout@.service /usr/lib/systemd/system
+sudo systemctl daemon-reload
+``
+
+Finally, you can append to your systemd setup by giving the port you
+desire for the service to run under.
+
 ```
+sudo systemctl enable docker-shout@9000
+```
+
 You don't need to declare the user, since it uses the default user of the
 running service. However, if you want to be specific, you can always change
 the user by replacing `%u`, on line 8 with your user, in the unit file.
