@@ -37,7 +37,7 @@ All you need to do is first copy to your systemd service directory and do a
 quick `daemon-reload`.
 
 ```
-sudo cp <docker-shout source>/docker-shout@.service /usr/lib/systemd/system
+sudo cp <docker-shout source>/shout@.service /usr/lib/systemd/system
 sudo systemctl daemon-reload
 ```
 
@@ -45,7 +45,7 @@ Finally, you can append to your systemd setup by giving the port you
 desire for the service to run under.
 
 ```
-sudo systemctl enable docker-shout@9000
+sudo systemctl enable shout@9000
 ```
 
 You don't need to declare the user, since it uses the default user of the
@@ -53,4 +53,4 @@ running service. However, if you want to be specific, you can always change
 the user by replacing `%u`, on line 8 with your user, in the unit file.
 
 Lastly, unless you want the volume configuration auto mounted to `/etc/shout`,
-change the volume location to whatever desire.
+change the volume location to whatever desire you may have.
