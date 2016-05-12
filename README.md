@@ -1,5 +1,5 @@
 # abaez/shout
-## A docker container for [shout](https://github.com/erming/shout) by [Alejandro Baez](https://twitter.com/a_baez)
+## A docker container for [shout][1] by [Alejandro Baez][3]
 
 ### DESCRIPTION
 A quick setup on getting shout running with very little configurations. To make things easy for myself, I have added a systemd service unit file.
@@ -41,3 +41,7 @@ sudo systemctl enable shout@9000
 You don't need to declare the user, since it uses the default user of the running service. However, if you want to be specific, you can always change the user by replacing `%u`, on line 8 with your user, in the unit file.
 
 Lastly, unless you want the volume configuration auto mounted to `/etc/shout`, change the volume location to whatever desire you may have.
+
+[1]: https://github.com/erming/shout
+[2]: http://shout-irc.com/docs/getting_started/usage.html
+[3]: https://twitter.com/a_baez
