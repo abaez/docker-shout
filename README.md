@@ -2,7 +2,14 @@
 ## A docker container for [shout][1] by [Alejandro Baez][3]
 
 ### DESCRIPTION
-A quick setup on getting shout running with very little configurations. To make things easy for myself, I have added a systemd service unit file.
+A quick setup on getting shout running with very little configurations. To make things easy for myself, I have added a systemd service unit file. It runs:
+
+``` Dockerfile
+ENTRYPOINT ["shout", "--home", "/config"]
+CMD ["start"]
+```
+
+as the entrypoint and command. You can find more commands from the [help][2]
 
 ### USAGE
 You can run this container in 3 ways: `docker run`, `docker-compose`, or sytemd unit service file. All of the three methods need both the port you will be using for the container and the volume location of the `/config` path.
