@@ -2,55 +2,42 @@
 ## A docker container for [shout](https://github.com/erming/shout) by [Alejandro Baez](https://twitter.com/a_baez)
 
 ### DESCRIPTION
-A quick setup on getting shout running with very little configurations.
-To make things easy for myself, I have added a systemd service unit file.
+A quick setup on getting shout running with very little configurations. To make things easy for myself, I have added a systemd service unit file.
 
 ### USAGE
-You can run this container in 3 ways: `docker run`, `docker-compose`, or
-sytemd unit service file. All of the three methods need both the port you will
-be using for the container and the volume location of the `/config` path.
+You can run this container in 3 ways: `docker run`, `docker-compose`, or sytemd unit service file. All of the three methods need both the port you will be using for the container and the volume location of the `/config` path.
 
 
 #### docker run
-To run using docker, naturally you would use the setup below, with of course
-changing the volume and port location:
+To run using docker, naturally you would use the setup below, with of course changing the volume and port location:
 
 ```
 docker run -v ./config:/config -p "9000:9000" abaez/shout
 ```
 
 #### docker-compose
-Here you shouldn't have too much issue getting running. All you will need to
-do is run `docker-compose up` and you good to go.
+Here you shouldn't have too much issue getting running. All you will need to do is run `docker-compose up` and you good to go.
 
-_Note_: that it actually builds the container instead of fetching it directly
-from docker hub.
+_Note_: that it actually builds the container instead of fetching it directly from docker hub.
 
-__Note__: don't forget to change those volume and port settings on the
-`docker-compose.yml` file...
+__Note__: don't forget to change those volume and port settings on the `docker-compose.yml` file...
 
 #### systemd unit file
-If you want to have the docker container running automagically on your
-machine, then this is the place to go.
+If you want to have the docker container running automagically on your machine, then this is the place to go.
 
-All you need to do is first copy to your systemd service directory and do a
-quick `daemon-reload`.
+All you need to do is first copy to your systemd service directory and do a quick `daemon-reload`.
 
 ```
 sudo cp <docker-shout source>/shout@.service /usr/lib/systemd/system
 sudo systemctl daemon-reload
 ```
 
-Finally, you can append to your systemd setup by giving the port you
-desire for the service to run under.
+Finally, you can append to your systemd setup by giving the port you desire for the service to run under.
 
 ```
 sudo systemctl enable shout@9000
 ```
 
-You don't need to declare the user, since it uses the default user of the
-running service. However, if you want to be specific, you can always change
-the user by replacing `%u`, on line 8 with your user, in the unit file.
+You don't need to declare the user, since it uses the default user of the running service. However, if you want to be specific, you can always change the user by replacing `%u`, on line 8 with your user, in the unit file.
 
-Lastly, unless you want the volume configuration auto mounted to `/etc/shout`,
-change the volume location to whatever desire you may have.
+Lastly, unless you want the volume configuration auto mounted to `/etc/shout`, change the volume location to whatever desire you may have.
