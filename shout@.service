@@ -8,6 +8,7 @@ After=docker.service
 User=%u
 Restart=on-failure
 RestartSec=10
+ExecStartPre=-/usr/bin/docker pull abaez/shout
 ExecStartPre=-/usr/bin/docker kill shout
 ExecStartPre=-/usr/bin/docker rm shout
 ExecStart=/usr/bin/docker run -v /etc/shout:/config -p "%i:9000" --name=shout abaez/shout
